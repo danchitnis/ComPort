@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "ES2015",
+    "target": "ES2017",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "typeRoots": [ "node_modules/@types", "./@types"],
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "paths": {
+      "*": ["node_modules/*"]
+    },
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+  
+}

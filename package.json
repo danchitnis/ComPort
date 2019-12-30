@@ -1,0 +1,22 @@
+{
+  "name": "comport",
+  "version": "0.1.0",
+  "description": "An easy package for SerialApi",
+  "main": "./dist/ComPort.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danchitnis/ComPort.git"
+  },
+  "author": "Danial Chitnis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danchitnis/ComPort/issues"
+  },
+  "homepage": "https://github.com/danchitnis/ComPort#readme",
+  "devDependencies": {
+    "typescript": "^3.7.4"
+  }
+}
