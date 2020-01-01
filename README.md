@@ -12,13 +12,19 @@ A simple package to use the new [Serial Api](https://wicg.github.io/serial/) ava
 
 ## How to enable Serial Api (Chrome 79)
 
-[Enable it here!](chrome://flags/#enable-experimental-web-platform-features)
+Enable it in: chrome://flags/#enable-experimental-web-platform-features
 
 ## Build instructions
 
 ```bash
 npm i
 npm run build
+```
+
+## installation
+
+```bash
+npm i @danchitnis/comport
 ```
 
 ## Examples
