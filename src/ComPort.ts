@@ -19,9 +19,10 @@
     async disconnect(): Promise<void> {
         if (this.port) {
           if (this.reader) {
-            await this.reader.cancel();
-            await this.port.close();
+            await this.reader.cancel().catch(e => console.log('Error: ', e.message));
+            this.port.close();
           }
+            
         }
         this.log("\nport is closed now!\n");
     }
@@ -31,6 +32,7 @@
         // - Request a port and open a connection.
         this.log("Requesting port");
         this.port = await navigator.serial.requestPort();
+
         // - Wait for the port to open.
         this.log("Openning port");
         await this.port.open({ baudrate: baudrate });
@@ -59,20 +61,27 @@
     }
     
     private async readLoop(): Promise<void> {
-          // CODELAB: Add read loop here.
+        // CODELAB: Add read loop here.
         while (true) {
+          
+          try {
             const { value, done } = await this.reader.read();
             if (value) {
-                this.procInput(value);
+              this.procInput(value);
             }
             if (done) {
-                console.log('[readLoop] DONE', done);
-                this.reader.releaseLock();
-                break;
+              console.log('[readLoop] DONE', done);
+              this.reader.releaseLock();
+              break;
             }
+          } catch (e) {
+            console.log(e);
+          }
+          
+          
+            
         }
-        //reader.cancel();
-        //port.close();
+        
     }
 
     private procInput(str: string): void {
@@ -95,6 +104,10 @@
     private log(str: string): void {
         const event = new CustomEvent("rx-msg",{detail:str});
         this.dispatchEvent(event);
+    }
+
+    addEventListener(eventType: "rx" | "rx-msg", listener: (this: this, ev: CustomEvent<string>) => void): void {
+      super.addEventListener(eventType, listener);
     }
 
    
