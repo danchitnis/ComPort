@@ -1,4 +1,4 @@
-# Com-Port
+# ComPort
 
 A simple package to use the new [Serial Api](https://wicg.github.io/serial/) available in Chrome
 
