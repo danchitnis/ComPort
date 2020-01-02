@@ -6,9 +6,15 @@ A simple package to use the new [Serial Api](https://wicg.github.io/serial/) ava
 
 ## Why Serial Api
 
+Although [WebUSB](https://wicg.github.io/webusb/) has been around for some years, it is mainly targeted at companies intending to developed web-based firmwares. A major downside of WebUSB is once a native driver is installed on the OS, the device will no longer be recognized by WebUSB. Unlike WebUSB, the [Serial Api](https://wicg.github.io/serial/) is intended for use as a traditional COM port (Serial port) which includes many microcontroller based devices and USB-to-Serial devices such as FTDI and Cypress chipsets. Additionally, you can still implement your own USB CDC protocol, and have the OS driver and Web driver co-exist. The Serial Api opens doors for new and exciting web-based front-ends for small and medium sized embedded projects.
+
 ## Why ComPort
 
+ComPort makes it easy for embedded developers to quickly build a modern front-end for their applications. It removes the hassle of dealing with async/await functions. This package is not intended for high-performance and high data-rate applications, but for quick and simple development. If high-performance is required then a browser based app is probably the wrong choice.  
+
 ## Potential use cases
+
+all serial communication to and from embedded hardware via USB-to-Serial bridges like FTDI cables and Arduino boards.
 
 ## How to enable Serial Api (Chrome 79)
 
