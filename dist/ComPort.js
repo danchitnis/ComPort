@@ -1,7 +1,8 @@
 /**
+ * This code is inspired by Googles Serial Api example
+ * https://codelabs.developers.google.com/codelabs/web-serial/
  *
- *
- * Danial Chitnis
+ * Danial Chitnis 2020
  */
 export class ComPort extends EventTarget {
     constructor() {
@@ -11,11 +12,20 @@ export class ComPort extends EventTarget {
     async disconnect() {
         if (this.port) {
             if (this.reader) {
-                await this.reader.cancel().catch(e => console.log('Error: ', e.message));
-                this.port.close();
+                await this.reader.cancel();
+                await this.inputDone.catch((e) => { console.log(e); });
+                this.reader = null;
+                this.inputDone = null;
             }
+            if (this.outputStream) {
+                await this.outputStream.getWriter().close();
+                await this.outputDone.catch((e) => { console.log(e); });
+                this.outputStream = null;
+                this.outputDone = null;
+            }
+            await this.port.close();
+            this.log("\nport is now closed!\n");
         }
-        this.log("\nport is closed now!\n");
     }
     async connectSerialApi(baudrate) {
         // CODELAB: Add code to request & open port here.
@@ -28,8 +38,11 @@ export class ComPort extends EventTarget {
         this.log("Port is now open 🎉");
         // CODELAB: Add code to read the stream here.
         const decoder = new TextDecoderStream();
-        const inputDone = this.port.readable.pipeTo(decoder.writable);
+        this.inputDone = this.port.readable.pipeTo(decoder.writable);
         const inputStream = decoder.readable;
+        const encoder = new TextEncoderStream();
+        this.outputDone = encoder.readable.pipeTo(this.port.writable);
+        this.outputStream = encoder.writable;
         this.reader = inputStream.getReader();
         this.readLoop();
     }
@@ -80,6 +93,16 @@ export class ComPort extends EventTarget {
     }
     addEventListener(eventType, listener) {
         super.addEventListener(eventType, listener);
+    }
+    async writeToStream(line) {
+        // CODELAB: Write to output stream
+        const writer = this.outputStream.getWriter();
+        //console.log('[SEND]', line);
+        await writer.write(line + '\n');
+        writer.releaseLock();
+    }
+    sendLine(line) {
+        this.writeToStream(line);
     }
 }
 //# sourceMappingURL=ComPort.js.map
