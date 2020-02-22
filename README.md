@@ -1,6 +1,6 @@
 # ComPort
 
-A simple package to use the new [Serial Api](https://wicg.github.io/serial/) available in Chrome
+A simple package to use the new [Serial Api](https://wicg.github.io/serial/) available in Chrome (also Edge based on Chromium)
 
 🔥 Notice : Serial Api is under Chrome experimental flag for Chrome 79 and expected to goes on Origins Trail on Chrome 80
 
