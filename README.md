@@ -16,7 +16,7 @@ ComPort makes it easy for embedded developers to quickly build a modern front-en
 
 all serial communication to and from embedded hardware via USB-to-Serial bridges like FTDI cables and Arduino boards.
 
-## How to enable Serial Api (Chrome 79)
+## How to enable Serial Api (Chrome 79 and above)
 
 Enable it in: chrome://flags/#enable-experimental-web-platform-features
 
@@ -36,6 +36,9 @@ npm i @danchitnis/comport
 ## Examples
 
 See [here](https://github.com/danchitnis/Serial-API-Examples) examples tested with [Arduino Nano 33 BLE](https://store.arduino.cc/arduino-nano-33-ble), but also extendable to other boards as it is simply using serial communication.
+
+## API documentation
+
 
 ## Useful links
 
