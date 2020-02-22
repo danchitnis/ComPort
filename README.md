@@ -33,12 +33,30 @@ npm run build
 npm i @danchitnis/comport
 ```
 
-## Examples
+## Example
+import the library
+```javascript
+import {ComPort} from "@danchitnis/ComPort"
+```
+initialize:
+```javascript
+const port  = new ComPort();
+port.connect(9600);
+port.addEventListener("rx", dataRX);
+```
+data RX event:
+```javascript
+function dataRX(e) {
+    log(e.detail + "\n");
+}
+```
 
-See [here](https://github.com/danchitnis/Serial-API-Examples) examples tested with [Arduino Nano 33 BLE](https://store.arduino.cc/arduino-nano-33-ble), but also extendable to other boards as it is simply using serial communication.
 
 ## API documentation
+[See here 🧾](https://danchitnis.github.io/ComPort/)
 
+## Demos
+See [here](https://github.com/danchitnis/Serial-API-Examples) examples tested with [Arduino Nano 33 BLE](https://store.arduino.cc/arduino-nano-33-ble), but also extendable to other boards as it is simply using serial communication.
 
 ## Useful links
 
