@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/danchitnis/ComPortt#readme",
   "devDependencies": {
-    "typedoc": "^0.16.10",
-    "typescript": "^3.8.2"
+    "typedoc": "^0.17.6",
+    "typescript": "^3.8.3"
   }
 }
