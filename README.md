@@ -2,7 +2,7 @@
 
 A simple package to use the new [Serial Api](https://wicg.github.io/serial/) available in Chrome (also Edge based on Chromium)
 
-🔥 Notice : Serial Api is under Chrome experimental flag for Chrome 79 and expected to goes on Origins Trail on Chrome 80
+🔥 **Notice** : Serial Api is under Chrome's experimental flag since Chrome 79 and on Origins Trail since Chrome 80. The API is unstable.
 
 ## Why Serial Api
 
@@ -10,7 +10,7 @@ Although [WebUSB](https://wicg.github.io/webusb/) has been around for some years
 
 ## Why ComPort
 
-ComPort makes it easy for embedded developers to quickly build a modern front-end for their applications. It removes the hassle of dealing with async/await functions. This package is not intended for high-performance and high data-rate applications, but for quick and simple development. If high-performance is required then a browser based app is probably the wrong choice.  
+ComPort makes it easy for embedded developers to quickly build a modern front-end for their applications. It removes the hassle of dealing with async/await functions. This package is not intended for high-performance and high data-rate applications, but for quick and simple development. If high-performance is required then a browser based app is probably the wrong choice.
 
 ## Potential use cases
 
@@ -34,33 +34,40 @@ npm i @danchitnis/comport
 ```
 
 ## Example
+
 import the library
+
 ```javascript
-import {ComPort} from "@danchitnis/ComPort"
+import { ComPort } from "@danchitnis/ComPort";
 ```
+
 initialize:
+
 ```javascript
-const port  = new ComPort();
+const port = new ComPort();
 port.connect(9600);
 port.addEventListener("rx", dataRX);
 ```
+
 data RX event:
+
 ```javascript
 function dataRX(e) {
-    log(e.detail + "\n");
+  log(e.detail + "\n");
 }
 ```
 
-
 ## API documentation
+
 [See here 🧾](https://danchitnis.github.io/ComPort/)
 
 ## Demos
+
 See [here](https://github.com/danchitnis/Serial-API-Examples) examples tested with [Arduino Nano 33 BLE](https://store.arduino.cc/arduino-nano-33-ble), but also extendable to other boards as it is simply using serial communication.
 
 ## Useful links
 
-* [W3C Serial Api working draft](https://wicg.github.io/serial/)
-* [Serial Api Chrome status](https://www.chromestatus.com/feature/6577673212002304)
-* [Google Serial Api example](https://codelabs.developers.google.com/codelabs/web-serial/#0)
-* [Serial Api Explainer](https://github.com/WICG/serial/blob/gh-pages/EXPLAINER.md)
+- [W3C Serial Api working draft](https://wicg.github.io/serial/)
+- [Serial Api Chrome status](https://www.chromestatus.com/feature/6577673212002304)
+- [Google Serial Api example](https://codelabs.developers.google.com/codelabs/web-serial/#0)
+- [Serial Api Explainer](https://github.com/WICG/serial/blob/gh-pages/EXPLAINER.md)
